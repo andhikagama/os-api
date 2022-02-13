@@ -3,6 +3,7 @@ module github.com/andhikagama/os-api
 go 1.16
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-playground/locales v0.14.0
 	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.10.0
@@ -13,6 +14,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.8.1
 	go.uber.org/dig v1.13.0
+	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
 	gorm.io/driver/mysql v1.2.3
 	gorm.io/gorm v1.22.5
 )
