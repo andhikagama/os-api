@@ -5,6 +5,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/andhikagama/os-api/model/dao"
+
 	"gorm.io/gorm"
 )
 
@@ -101,4 +103,28 @@ func buildSort(sort []string, availableSort map[string]string) string {
 	}
 
 	return strings.Join(order, `, `)
+}
+
+func (bm BaseModelSoftDelete) ToDao() dao.BaseModelSoftDelete {
+	return dao.BaseModelSoftDelete{
+		CreatedAt: bm.CreatedAt,
+		UpdatedAt: bm.UpdatedAt,
+		DeletedAt: bm.DeletedAt,
+	}
+}
+
+func NewBaseModelSoftDelete(bm dao.BaseModelSoftDelete) BaseModelSoftDelete {
+	return BaseModelSoftDelete{
+		CreatedAt: bm.CreatedAt,
+		UpdatedAt: bm.UpdatedAt,
+		DeletedAt: bm.DeletedAt,
+	}
+}
+
+func (pg BasePagination) ToDao() dao.BasePagination {
+	return dao.BasePagination{
+		Page:  pg.Page,
+		Limit: pg.Limit,
+		Sort:  pg.Sort,
+	}
 }

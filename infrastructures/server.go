@@ -3,16 +3,26 @@ package infrastructures
 import (
 	"fmt"
 
+	"github.com/andhikagama/os-api/infrastructures/middleware"
 	"github.com/andhikagama/os-api/infrastructures/rest"
 	"github.com/andhikagama/os-api/shared"
 )
 
 type WebServer struct {
-	resource shared.Resource
-	routes   rest.Routes
+	resource   shared.Resource
+	middleware middleware.Middleware
+	routes     rest.Routes
 }
 
 func (ws *WebServer) Serve() {
+	ws.middleware.Echo = ws.resource.Echo
+	ws.middleware.Config = ws.resource.Config
+
+	// Set middleware
+	ws.resource.Echo.Pre(ws.middleware.RemoveTrailingSlash())
+	ws.resource.Echo.Use(ws.middleware.SetCORS())
+	ws.resource.Echo.Use(ws.middleware.ValidatePrivilege)
+	ws.resource.Echo.Use(ws.middleware.ValidateContentLength)
 
 	// Set validator
 	ws.resource.Echo.Validator = ws.resource.Validator

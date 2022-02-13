@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"errors"
 	"net/http"
 	"strings"
 
@@ -22,9 +23,8 @@ type (
 	}
 
 	errorWrapper struct {
-		Code    int      `json:"code"`
-		Message string   `json:"message"`
-		Errors  []string `json:"errors"`
+		Message  string   `json:"message"`
+		Messages []string `json:"messages"`
 	}
 
 	responseError struct {
@@ -116,9 +116,8 @@ func (c *Context) ResponseErrorJSON(code int, err error) error {
 	if !ok {
 		return c.EchoCtx.JSON(code, responseError{
 			Error: errorWrapper{
-				Code:    code,
-				Message: err.Error(),
-				Errors:  []string{err.Error()},
+				Message:  err.Error(),
+				Messages: []string{err.Error()},
 			},
 		})
 	}
@@ -129,11 +128,10 @@ func (c *Context) ResponseErrorJSON(code int, err error) error {
 		errDescs = append(errDescs, strings.ToLower(v))
 	}
 
-	return c.EchoCtx.JSON(code, responseError{
+	return c.EchoCtx.JSON(http.StatusBadRequest, responseError{
 		Error: errorWrapper{
-			Code:    http.StatusBadRequest,
-			Message: err.Error(),
-			Errors:  errDescs,
+			Message:  err.Error(),
+			Messages: errDescs,
 		},
 	})
 }
@@ -145,18 +143,16 @@ func (c *Context) ResponseErrorJSONFromList(err error, errList consts.ErrList) e
 	)
 
 	for _, v := range errList {
-		if v.Error == err {
+		if errors.Is(err, v.Error) {
 			code = v.Code
-			respErr = v.Error
-			break
+			respErr = err
 		}
 	}
 
 	return c.EchoCtx.JSON(code, responseError{
 		Error: errorWrapper{
-			Code:    code,
-			Message: respErr.Error(),
-			Errors:  []string{respErr.Error()},
+			Message:  respErr.Error(),
+			Messages: []string{respErr.Error()},
 		},
 	})
 }

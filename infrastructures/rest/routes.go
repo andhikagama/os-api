@@ -20,4 +20,7 @@ func New(resource shared.Resource, controller Controller) Routes {
 
 func (r *Routes) Register(v1 *echo.Group) {
 	r.resource.Echo.GET("/health", r.controller.Health.Check).Name = consts.PrivilegePublic
+
+	users := v1.Group("/users")
+	users.POST("", r.controller.User.Create).Name = consts.PrivilegeTrusted
 }
