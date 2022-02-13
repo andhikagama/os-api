@@ -23,4 +23,8 @@ func (r *Routes) Register(v1 *echo.Group) {
 
 	users := v1.Group("/users")
 	users.POST("", r.controller.User.Create).Name = consts.PrivilegeTrusted
+	users.POST("/login", r.controller.User.Login).Name = consts.PrivilegeTrusted
+
+	inventories := v1.Group("/inventories")
+	inventories.GET("", r.controller.Inventory.GetAllPaginated).Name = consts.PrivilegeGranted
 }

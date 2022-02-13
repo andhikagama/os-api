@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_phone_number` (`phone_number`)
+  UNIQUE KEY `uq_phone` (`phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

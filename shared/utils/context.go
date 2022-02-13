@@ -84,9 +84,9 @@ func (c *Context) CommitORMTransaction() {
 	c.Tx = nil
 }
 
-func (c Context) GetUserPhoneNumber() string {
+func (c Context) GetUserPhone() string {
 	claims := c.EchoCtx.Get("claims").(*Token)
-	return claims.UserPhoneNumber
+	return claims.UserPhone
 }
 
 func (c Context) GetUserID() uint64 {

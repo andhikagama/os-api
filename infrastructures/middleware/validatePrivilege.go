@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/andhikagama/os-api/config/consts"
 	"github.com/andhikagama/os-api/shared/utils"
@@ -43,6 +44,13 @@ func (m *Middleware) ValidatePrivilege(next echo.HandlerFunc) echo.HandlerFunc {
 		}
 
 		if privilege == consts.PrivilegeTrusted && authorization == `` {
+			return next(c)
+		}
+
+		token := strings.Replace(authorization, `Bearer `, ``, 1)
+		claims, err := m.validateToken(token)
+		if err == nil {
+			c.Set("claims", claims)
 			return next(c)
 		}
 

@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"fmt"
-
 	"github.com/andhikagama/os-api/model/dao"
 	"github.com/andhikagama/os-api/shared/utils"
 )
@@ -12,7 +10,7 @@ func (r repository) Create(ctx *utils.Context, request dao.User) (dao.User, erro
 	if err := tx.
 		Create(&request).
 		Error; err != nil {
-		fmt.Println(err)
+		r.resource.Logger.Errorf("%v error %w", segmentCreate, err)
 		return dao.User{}, err
 	}
 

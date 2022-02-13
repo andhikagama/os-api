@@ -1,8 +1,8 @@
-package user
+package inventory
 
 import (
 	"github.com/andhikagama/os-api/domain"
-	"github.com/andhikagama/os-api/model/dto/user"
+	"github.com/andhikagama/os-api/model/dto/inventory"
 	"github.com/andhikagama/os-api/shared"
 	"github.com/andhikagama/os-api/shared/utils"
 )
@@ -10,8 +10,7 @@ import (
 type (
 	// Handler .
 	Handler interface {
-		Create(ctx *utils.Context, request user.CreateRequest) (user.Response, error)
-		Login(ctx *utils.Context, request user.LoginRequest) (user.LoginResponse, error)
+		GetAllPaginated(ctx *utils.Context, paginatedRequest inventory.PaginatedRequest) (inventory.PaginatedResponse, error)
 	}
 
 	handler struct {

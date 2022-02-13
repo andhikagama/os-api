@@ -6,8 +6,8 @@ import (
 
 type (
 	Token struct {
-		UserID          uint64
-		UserPhoneNumber string
+		UserID    uint64
+		UserPhone string
 		jwt.StandardClaims
 	}
 )
