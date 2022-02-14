@@ -7,7 +7,6 @@ Simple Online Store API
 * [Golang](https://golang.org) - Go Programming Language
 * [Echo](https://echo.labstack.com/) - HTTP Framework
 * [Gomod](https://github.com/golang/go/wiki/Modules) - Modules Management
-* [Golang Migrate](https://github.com/golang-migrate/migrate) - Database migration
 
 ## Install Modules
 
@@ -21,9 +20,7 @@ Make sure you have go v11 or above installed
 
 ## Run Migration
 
-`migrate -path={migrations path} -database="{yourdatabase}" up` e.g
-
-`migrate -path=./migrations/sql -database="mysql://root:password@tcp(127.0.0.1:3306)/db_online_store" up`
+Run `make migrate` or `go run main.go migrate`
 
 ## Development server
 

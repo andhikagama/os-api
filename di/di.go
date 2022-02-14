@@ -5,6 +5,7 @@ import (
 	"github.com/andhikagama/os-api/domain"
 	"github.com/andhikagama/os-api/handlers"
 	"github.com/andhikagama/os-api/infrastructures"
+	"github.com/andhikagama/os-api/migrations"
 	"github.com/andhikagama/os-api/shared"
 	"go.uber.org/dig"
 )
@@ -18,6 +19,7 @@ func BuildContainer() *dig.Container {
 	domain.Register(container)
 	handlers.Register(container)
 	infrastructures.Register(container)
+	migrations.Register(container)
 
 	return container
 }

@@ -10,4 +10,7 @@ test:
 build: test
 	go build -o ${BINARY}
 
-.PHONY: run test build
+migrate:
+	go run ${MAIN} migrate
+
+.PHONY: run test build migrate
