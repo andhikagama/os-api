@@ -37,9 +37,6 @@ func (h *handler) Create(ctx *utils.Context, request order.CreateRequest) (order
 	o, err := h.domain.Order.Create(ctx, orderDao)
 	if err != nil {
 		ctx.RollBackORMTransaction()
-		if utils.IsDuplicateError(err) {
-			return order.Response{}, fmt.Errorf("user %w", consts.ErrAlreadyExist)
-		}
 
 		return order.Response{}, err
 	}

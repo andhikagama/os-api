@@ -16,17 +16,17 @@ type (
 	}
 
 	service struct {
-		resource   shared.Resource
 		repository repository.Repository
+		resource   shared.Resource
 	}
 )
 
 // New .
 func New(
-	resource shared.Resource,
-	repository repository.Repository) Service {
+	repository repository.Repository,
+	resource shared.Resource) (Service, error) {
 	return &service{
-		resource:   resource,
 		repository: repository,
-	}
+		resource:   resource,
+	}, nil
 }
