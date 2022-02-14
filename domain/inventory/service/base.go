@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/andhikagama/os-api/domain/inventory/repository"
+	"github.com/andhikagama/os-api/model/dao"
 	"github.com/andhikagama/os-api/model/dto/inventory"
 	"github.com/andhikagama/os-api/shared"
 	"github.com/andhikagama/os-api/shared/utils"
@@ -10,6 +11,9 @@ import (
 type (
 	Service interface {
 		GetAllPaginated(ctx *utils.Context, paginatedRequest inventory.PaginatedRequest) (inventory.PaginatedResponse, error)
+		GetByID(ctx *utils.Context, id uint64) (dao.Inventory, error)
+		DecreaseAvailableQty(ctx *utils.Context, id uint64, qty float64) error
+		IncreaseAvailableQty(ctx *utils.Context, id uint64, qty float64) error
 	}
 
 	service struct {

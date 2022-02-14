@@ -23,6 +23,9 @@ var (
 	ErrAlreadyExist        = errors.New("already exist")
 	ErrBadRequest          = errors.New(`bad request`)
 
+	ErrUnknownConstant = errors.New("unknown constant")
+	ErrConstantParsing = errors.New("expected string for the constant")
+
 	// User Error List
 	ErrUserInvalidPhoneOrPassword = errors.New("invalid phone or password")
 
@@ -36,5 +39,11 @@ var (
 	ErrListInventory = ErrList{
 		{Code: http.StatusNotFound, Error: gorm.ErrRecordNotFound},
 		{Code: http.StatusConflict, Error: ErrAlreadyExist},
+	}
+
+	// Order Error List
+	ErrOrderInsufficientQty = errors.New("insufficient qty")
+	ErrListOrder            = ErrList{
+		{Code: http.StatusBadRequest, Error: ErrOrderInsufficientQty},
 	}
 )

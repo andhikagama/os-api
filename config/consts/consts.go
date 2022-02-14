@@ -5,6 +5,8 @@ const (
 	HeaderAppSecret     = `X-App-Secret`
 	HeaderAppLanguage   = `X-App-Language`
 	HeaderAuthorization = `Authorization`
+
+	BySystem = "system"
 )
 
 var (

@@ -11,3 +11,11 @@ func IsDuplicateError(err error) bool {
 
 	return false
 }
+
+func IsInsufficientError(err error) bool {
+	if strings.Contains(err.Error(), "Error 1264") {
+		return true
+	}
+
+	return false
+}

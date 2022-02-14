@@ -27,4 +27,7 @@ func (r *Routes) Register(v1 *echo.Group) {
 
 	inventories := v1.Group("/inventories")
 	inventories.GET("", r.controller.Inventory.GetAllPaginated).Name = consts.PrivilegeGranted
+
+	orders := v1.Group("/orders")
+	orders.POST("", r.controller.Order.Create).Name = consts.PrivilegeGranted
 }

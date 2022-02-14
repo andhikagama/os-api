@@ -50,3 +50,32 @@ func (mr *MockRepositoryMockRecorder) GetAllPaginated(ctx, paginatedRequest inte
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockRepository)(nil).GetAllPaginated), ctx, paginatedRequest)
 }
+
+// GetByID mocks base method.
+func (m *MockRepository) GetByID(ctx *utils.Context, id uint64) (dao.Inventory, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetByID", ctx, id)
+	ret0, _ := ret[0].(dao.Inventory)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetByID indicates an expected call of GetByID.
+func (mr *MockRepositoryMockRecorder) GetByID(ctx, id interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetByID", reflect.TypeOf((*MockRepository)(nil).GetByID), ctx, id)
+}
+
+// UpdateByID mocks base method.
+func (m *MockRepository) UpdateByID(ctx *utils.Context, id uint64, request map[string]interface{}) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateByID", ctx, id, request)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateByID indicates an expected call of UpdateByID.
+func (mr *MockRepositoryMockRecorder) UpdateByID(ctx, id, request interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateByID", reflect.TypeOf((*MockRepository)(nil).UpdateByID), ctx, id, request)
+}
