@@ -3,18 +3,17 @@ package inventory
 import (
 	"github.com/andhikagama/os-api/model/dao"
 	"github.com/andhikagama/os-api/model/dto"
-	"github.com/shopspring/decimal"
 )
 
 type (
 	Response struct {
-		ID            uint64          `json:"id"`
-		SkuName       string          `json:"skuName"`
-		SkuCode       string          `json:"skuCode"`
-		WAC           decimal.Decimal `json:"wac"`
-		TotalQty      decimal.Decimal `json:"totalQty"`
-		AvailableQty  decimal.Decimal `json:"availableQty"`
-		QuarantineQty decimal.Decimal `json:"quarantineQty"`
+		ID            uint64  `json:"id"`
+		SkuName       string  `json:"skuName"`
+		SkuCode       string  `json:"skuCode"`
+		WAC           float64 `json:"wac"`
+		TotalQty      float64 `json:"totalQty"`
+		AvailableQty  float64 `json:"availableQty"`
+		QuarantineQty float64 `json:"quarantineQty"`
 
 		dto.BaseModelSoftDelete
 	}

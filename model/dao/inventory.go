@@ -1,16 +1,14 @@
 package dao
 
-import "github.com/shopspring/decimal"
-
 type (
 	Inventory struct {
-		ID            uint64          `gorm:"primaryKey"`
-		SkuName       string          `gorm:"not null"`
-		SkuCode       string          `gorm:"not null"`
-		WAC           decimal.Decimal `gorm:"not null"`
-		TotalQty      decimal.Decimal `gorm:"not null"`
-		AvailableQty  decimal.Decimal `gorm:"not null"`
-		QuarantineQty decimal.Decimal `gorm:"not null"`
+		ID            uint64  `gorm:"primaryKey"`
+		SkuName       string  `gorm:"not null"`
+		SkuCode       string  `gorm:"not null"`
+		WAC           float64 `gorm:"not null"`
+		TotalQty      float64 `gorm:"not null"`
+		AvailableQty  float64 `gorm:"not null"`
+		QuarantineQty float64 `gorm:"not null"`
 
 		GormModel
 		BaseModelSoftDelete

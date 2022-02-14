@@ -23,5 +23,5 @@ func (c Controller) GetAllPaginated(ec echo.Context) error {
 		return ctx.ResponseErrorJSONFromList(err, consts.ErrListInventory)
 	}
 
-	return ctx.ResponseCreatedJSON(result)
+	return ctx.ResponseSuccessJSON(result)
 }
