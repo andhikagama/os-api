@@ -11,6 +11,7 @@ type (
 	// Handler .
 	Handler interface {
 		Create(ctx *utils.Context, request order.CreateRequest) (order.Response, error)
+		UpdatePayment(ctx *utils.Context, request order.UpdatePaymentRequest) (order.Response, error)
 	}
 
 	handler struct {

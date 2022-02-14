@@ -14,6 +14,8 @@ type (
 		GetByID(ctx *utils.Context, id uint64) (dao.Inventory, error)
 		DecreaseAvailableQty(ctx *utils.Context, id uint64, qty float64) error
 		IncreaseAvailableQty(ctx *utils.Context, id uint64, qty float64) error
+		UpdateExpired(ctx *utils.Context, req dao.OrderDetails) error
+		UpdatePaid(ctx *utils.Context, req dao.OrderDetails) error
 	}
 
 	service struct {

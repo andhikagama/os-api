@@ -93,3 +93,31 @@ func (mr *MockServiceMockRecorder) IncreaseAvailableQty(ctx, id, qty interface{}
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseAvailableQty", reflect.TypeOf((*MockService)(nil).IncreaseAvailableQty), ctx, id, qty)
 }
+
+// UpdateExpired mocks base method.
+func (m *MockService) UpdateExpired(ctx *utils.Context, req dao.OrderDetails) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateExpired", ctx, req)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateExpired indicates an expected call of UpdateExpired.
+func (mr *MockServiceMockRecorder) UpdateExpired(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateExpired", reflect.TypeOf((*MockService)(nil).UpdateExpired), ctx, req)
+}
+
+// UpdatePaid mocks base method.
+func (m *MockService) UpdatePaid(ctx *utils.Context, req dao.OrderDetails) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdatePaid", ctx, req)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdatePaid indicates an expected call of UpdatePaid.
+func (mr *MockServiceMockRecorder) UpdatePaid(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePaid", reflect.TypeOf((*MockService)(nil).UpdatePaid), ctx, req)
+}

@@ -25,7 +25,7 @@ func main() {
 }
 
 func runMigration(cmd []string, container *dig.Container) error {
-	if len(cmd) == 0 {
+	if len(cmd) == 1 {
 		return nil
 	}
 

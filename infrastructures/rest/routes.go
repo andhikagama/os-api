@@ -30,4 +30,5 @@ func (r *Routes) Register(v1 *echo.Group) {
 
 	orders := v1.Group("/orders")
 	orders.POST("", r.controller.Order.Create).Name = consts.PrivilegeGranted
+	orders.PATCH("/:id/payment", r.controller.Order.UpdatePayment).Name = consts.PrivilegeGranted
 }

@@ -7,8 +7,9 @@ import (
 )
 
 const (
-	segmentCreate  = "order.repository.Create"
-	segmentGetByID = "order.repository.GetByID"
+	segmentCreate     = "order.repository.Create"
+	segmentGetByID    = "order.repository.GetByID"
+	segmentUpdateByID = "order.repository.UpdateByID"
 )
 
 type (
@@ -16,6 +17,7 @@ type (
 	Repository interface {
 		Create(ctx *utils.Context, request dao.Order) (dao.Order, error)
 		GetByID(ctx *utils.Context, id uint64) (dao.Order, error)
+		UpdateByID(ctx *utils.Context, id uint64, request map[string]interface{}) error
 	}
 
 	repository struct {
