@@ -14,10 +14,6 @@ Run `go mod tidy` to install dependencies required that state on go.mod
 
 Make sure you have go v11 or above installed
 
-## Install Golang Migrate
-
-[Please read here](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
-
 ## Run Migration
 
 Run `make migrate` or `go run main.go migrate`
